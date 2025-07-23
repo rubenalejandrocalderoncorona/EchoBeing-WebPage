@@ -1,0 +1,717 @@
+/* Variables for consistent color scheme */
+:root {
+    --primary-blue-dark: #0080B3; /* Darker blue from logo */
+    --primary-blue-light: #00CCFF; /* Lighter blue/cyan from logo */
+    --gradient-start: #0080B3;
+    --gradient-end: #00CCFF;
+    --background-light-grey: #F5F5F5; /* A slightly lighter grey for background */
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+    --border-color: #E0E0E0;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --transition-speed: 0.3s;
+    --highlight-color: rgba(0, 204, 255, 0.3); /* Semi-transparent light blue for highlight */
+}
+
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background-light-grey);
+    overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-blue-dark);
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--primary-blue-light);
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+h2 {
+    font-size: 3.2em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-align: center;
+    transition: all var(--transition-speed) ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+    color: var(--text-light);
+    box-shadow: 0 8px 15px var(--shadow-color);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+    background-color: var(--text-light);
+    color: var(--primary-blue-dark);
+    border: 2px solid var(--primary-blue-dark);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-blue-dark);
+    color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Header */
+.main-header {
+    background-color: var(--text-light);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-blue-dark);
+}
+
+.logo-img {
+    height: 40px; /* Adjust as needed */
+    width: auto;
+    margin-right: 10px;
+    /* Placeholder SVG for logo */
+    background-color: var(--primary-blue-light); /* Placeholder color */
+    border-radius: 5px;
+}
+/* If you replace with an actual image, remove the background-color and border-radius */
+.logo-img[src*="logo-placeholder.svg"] {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%2300CCFF"/><text x="50%" y="60%" font-family="Arial" font-size="40" fill="%23FFFFFF" text-anchor="middle" alignment-baseline="middle">EB</text></svg>');
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-blue-light);
+    transition: width var(--transition-speed) ease-out;
+}
+
+.main-nav ul li a:hover::after,
+.main-nav ul li a.active::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: var(--primary-blue-dark);
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+/* Mobile Navigation Overlay (Full Page) */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-blue-dark); /* Dark blue background */
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%); /* Start off-screen */
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1); /* Smooth, slightly bouncy transition */
+    opacity: 0; /* Start hidden */
+    pointer-events: none; /* Disable interaction when hidden */
+}
+
+.mobile-nav-overlay.open {
+    transform: translateX(0); /* Slide in */
+    opacity: 1; /* Fade in */
+    pointer-events: auto; /* Enable interaction */
+}
+
+.mobile-nav-overlay .close-menu {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 3em; /* Larger close button */
+    color: var(--text-light);
+    cursor: pointer;
+    z-index: 1002;
+    transition: transform var(--transition-speed) ease;
+}
+
+.mobile-nav-overlay .close-menu:hover {
+    transform: rotate(90deg);
+}
+
+.mobile-menu-list {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    opacity: 0; /* Hidden initially */
+    transform: translateY(20px);
+    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s; /* Delay for menu items */
+}
+
+.mobile-nav-overlay.open .mobile-menu-list {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-menu-list li {
+    margin: 15px 0; /* Slightly smaller margin */
+    overflow: hidden; /* Hide overflow for staggered animation */
+}
+
+.mobile-menu-list li a {
+    color: var(--text-light);
+    font-size: 2.5em; /* Larger font size */
+    font-weight: 600;
+    transition: color var(--transition-speed) ease, transform 0.3s ease;
+    display: inline-block; /* For transform */
+    position: relative;
+    padding-bottom: 5px; /* Space for underline */
+}
+
+.mobile-menu-list li a:hover {
+    color: var(--primary-blue-light);
+    transform: translateX(10px); /* Slight movement on hover */
+}
+
+/* Staggered animation for mobile menu items */
+.mobile-nav-overlay.open .mobile-menu-list li:nth-child(1) a { transition-delay: 0.1s; }
+.mobile-nav-overlay.open .mobile-menu-list li:nth-child(2) a { transition-delay: 0.15s; }
+.mobile-nav-overlay.open .mobile-menu-list li:nth-child(3) a { transition-delay: 0.2s; }
+.mobile-nav-overlay.open .mobile-menu-list li:nth-child(4) a { transition-delay: 0.25s; }
+.mobile-nav-overlay.open .mobile-menu-list li:nth-child(5) a { transition-delay: 0.3s; }
+.mobile-nav-overlay.open .mobile-menu-list li:nth-child(6) a { transition-delay: 0.35s; }
+.mobile-nav-overlay.open .mobile-menu-list li:nth-child(7) a { transition-delay: 0.4s; }
+.mobile-nav-overlay.open .mobile-menu-list li:nth-child(8) a { transition-delay: 0.45s; }
+.mobile-nav-overlay.open .mobile-menu-list li:nth-child(9) a { transition-delay: 0.5s; }
+.mobile-nav-overlay.open .mobile-menu-list li:nth-child(10) a { transition-delay: 0.55s; }
+.mobile-nav-overlay.open .mobile-menu-list li:nth-child(11) a { transition-delay: 0.6s; }
+
+
+/* Hero Section (index.html specific) */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light); /* Text color for hero section */
+    overflow: hidden; /* Ensure canvas doesn't overflow */
+    padding-top: 80px; /* Space for fixed header */
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-content h2 {
+    color: var(--text-light);
+    font-size: 4.5em;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.hero-content .subtitle {
+    font-size: 1.5em;
+    font-weight: 300;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+
+/* Page Sections (for services.html, about.html, contact.html) */
+.page-section {
+    padding: 120px 0; /* More padding for full page sections */
+    min-height: calc(100vh - 80px - 90px); /* Full viewport height minus header and footer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.page-title {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: var(--primary-blue-dark);
+}
+
+.page-subtitle {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+/* Services Page Specific */
+.services-section {
+    background-color: var(--background-light-grey);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    align-items: stretch; /* Ensure cards have equal height */
+    margin-top: 50px;
+}
+
+.service-card {
+    background-color: var(--text-light);
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Longer transition for zoom */
+    border: 1px solid var(--border-color);
+    position: relative; /* For text highlighting */
+    overflow: hidden; /* Ensure no overflow during zoom */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-card:hover {
+    transform: translateY(-10px) scale(1.03); /* Lift and slightly zoom */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon-wrapper {
+    width: 90px; /* Slightly larger icon wrapper */
+    height: 90px;
+    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 30px; /* Increased margin */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease; /* Transition for icon zoom */
+}
+
+.service-card:hover .service-icon-wrapper {
+    transform: scale(1.1); /* Zoom icon on card hover */
+}
+
+.service-icon {
+    width: 65px; /* Adjust as needed */
+    height: 65px; /* Adjust as needed */
+    filter: brightness(0) invert(1); /* Makes SVG icons white */
+    /* Placeholder SVG for service icons */
+    background-color: transparent; /* No background needed for actual SVG */
+}
+/* If you replace with an actual image, remove the background-color */
+.service-icon[src*="placeholder.svg"] {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>');
+    filter: none; /* Placeholder is already white */
+}
+/* Specific placeholders for different icons */
+.service-icon[src*="icon-automation-placeholder.svg"] {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/></svg>');
+}
+.service-icon[src*="icon-virtual-agent-placeholder.svg"] {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>');
+}
+.service-icon[src*="icon-data-analytics-placeholder.svg"] {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>');
+}
+.service-icon[src*="icon-integration-placeholder.svg"] {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M17 17h-4V7h4v10zm-2-8h-2v6h2V9zm4-4h-2V3h-2v2h-2V3H9v2H7V3H5v2H3v14h2v-2h2v2h2v-2h2v2h2v-2h2v2h2V5z"/></svg>');
+}
+
+
+.service-card h4 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--primary-blue-dark);
+    position: relative; /* For text highlighting */
+    z-index: 1; /* Ensure text is above highlight */
+}
+
+.service-card p {
+    font-size: 0.95em;
+    color: #555;
+    position: relative; /* For text highlighting */
+    z-index: 1; /* Ensure text is above highlight */
+}
+
+/* Text highlighting effect */
+.service-card h4::after,
+.service-card p::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--highlight-color);
+    transform: scaleX(0); /* Start hidden */
+    transform-origin: left;
+    transition: transform 0.3s ease-out;
+    z-index: 0; /* Behind text */
+}
+
+.service-card:hover h4::after,
+.service-card:hover p::after {
+    transform: scaleX(1); /* Reveal on hover */
+}
+
+/* About Page Specific */
+.about-section {
+    background-color: var(--text-light);
+    text-align: center;
+}
+
+.about-section p {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+#typing-text {
+    position: relative;
+    display: inline-block;
+    color: var(--primary-blue-dark);
+}
+
+/* Typing cursor effect */
+#typing-text::after {
+    content: '|';
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary-blue-dark); }
+}
+
+
+/* Contact Page Specific */
+.contact-section {
+    background-color: var(--background-light-grey);
+    text-align: center;
+}
+
+.contact-section p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.contact-info {
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    display: inline-block; /* To center the block */
+    text-align: left;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #555;
+}
+.contact-info strong {
+    color: var(--primary-blue-dark);
+}
+
+
+/* Footer */
+.main-footer {
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+/* --- General Animations (for all pages) --- */
+
+/* Fade in up animation for initial load */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.fade-in-up.delay-1 { animation-delay: 0.3s; }
+.fade-in-up.delay-2 { animation-delay: 0.6s; }
+.fade-in-up.delay-3 { animation-delay: 0.9s; }
+.fade-in-up.delay-4 { animation-delay: 1.2s; }
+.fade-in-up.delay-5 { animation-delay: 1.5s; }
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reveal on load for page sections */
+.reveal-on-load {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+}
+
+/* This class will be added by JS on page load */
+body.page-loaded .reveal-on-load {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Individual item animations within a revealed section (for services page) */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+}
+
+body.page-loaded .reveal-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .main-nav {
+        display: none; /* Hide desktop nav */
+    }
+
+    .menu-toggle {
+        display: block; /* Show mobile menu toggle */
+    }
+
+    .hero-content h2 {
+        font-size: 3.5em;
+    }
+
+    .hero-content .subtitle {
+        font-size: 1.3em;
+    }
+
+    .page-title {
+        font-size: 2.8em;
+    }
+
+    .page-subtitle {
+        font-size: 1.1em;
+    }
+
+    .service-card {
+        padding: 30px;
+    }
+
+    .mobile-menu-list li a {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header .container {
+        padding: 0 15px;
+    }
+
+    .logo {
+        font-size: 1.5em;
+    }
+
+    .hero-content h2 {
+        font-size: 2.8em;
+    }
+
+    .hero-content .subtitle {
+        font-size: 1.1em;
+    }
+
+    .page-section {
+        padding: 100px 0;
+        min-height: auto; /* Allow content to dictate height on smaller screens */
+    }
+
+    .page-title {
+        font-size: 2.2em;
+    }
+
+    .page-subtitle {
+        font-size: 1em;
+    }
+
+    .service-card {
+        padding: 25px;
+    }
+
+    .service-icon-wrapper {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+
+    .service-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
+
+    .mobile-nav-overlay .close-menu {
+        font-size: 2em;
+        top: 20px;
+        right: 20px;
+    }
+
+    .mobile-menu-list li a {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 2em;
+    }
+
+    .hero-content .subtitle {
+        font-size: 1em;
+    }
+
+    .page-title {
+        font-size: 1.8em;
+    }
+
+    .service-card {
+        padding: 20px;
+    }
+
+    .service-card h4 {
+        font-size: 1.3em;
+    }
+
+    .service-card p {
+        font-size: 0.85em;
+    }
+
+    .mobile-menu-list li a {
+        font-size: 1.5em;
+    }
+
+    .contact-info {
+        padding: 15px;
+        font-size: 0.9em;
+    }
+}
