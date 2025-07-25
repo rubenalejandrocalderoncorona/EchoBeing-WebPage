@@ -4,52 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echo Being - Intelligent AI Automation</title>
+    <!-- Poppins font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome for icons (e.g., menu icon) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
+    <!-- Header Section with Logo and Navigation -->
     <header class="main-header">
         <div class="container">
             <div class="logo">
-                <img src="images/logo-placeholder.svg" alt="Echo Being Logo" class="logo-img">
-                <span class="logo-text">Echo Being</span>
+                <a href="index.html" class="logo-link" aria-label="Go to Home Page">
+                    <!-- Placeholder for your logo -->
+                    <!-- Expected size: approx. 40px height, SVG or PNG recommended -->
+                    <img src="images/logo-placeholder.svg" alt="Echo Being Logo" class="logo-img">
+                    <!-- Replace 'images/logo-placeholder.svg' with the actual path to your logo. -->
+                    <!-- For now, it's a simple SVG placeholder defined in CSS. -->
+                    <span class="logo-text">Echo Being</span>
+                </a>
             </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+            <!-- Desktop navigation is removed, all navigation is through hamburger menu -->
             <button class="menu-toggle" aria-label="Open Menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
 
+    <!-- Mobile Navigation Overlay (Full Page - Always active via JS logic) -->
     <nav class="mobile-nav-overlay">
         <button class="close-menu" aria-label="Close Menu">
             <i class="fas fa-times"></i>
         </button>
-        <ul class="mobile-menu-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">What we do</a></li>
-            <li><a href="#">Offers </a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="#">Thinking </a></li>
-            <li><a href="about.html">Who we are</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="#">Developers </a></li>
-            <li><a href="#">Projects and Products </a></li>
-            <li><a href="contact.html">Get in touch</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+        <div class="mobile-menu-content container">
+            <ul class="mobile-menu-list main-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <!-- Footer content inside the mobile menu, pushed to the bottom -->
+            <div class="mobile-menu-footer">
+                <div class="footer-grid">
+                    <div class="footer-col footer-branding">
+                        <a href="index.html" class="footer-logo-link">
+                            <img src="images/logo-placeholder-white.svg" alt="Echo Being Logo" class="footer-logo-img">
+                            <span class="footer-logo-text">Echo Being</span>
+                        </a>
+                        <p class="tagline">Intelligent AI Automation</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col footer-nav">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col footer-contact">
+                        <h4>Get in touch</h4>
+                        <p><a href="mailto:hello@echobeing.com">hello@echobeing.com</a></p>
+                        <p>+1 (555) 123-4567</p>
+                        <p>123 AI Innovation Drive, Tech City, TX 78701</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Echo Being. All Rights Reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
 
+    <!-- Hero Section -->
     <section id="hero" class="hero-section">
+        <!-- Canvas for background animation -->
         <canvas id="hero-canvas"></canvas>
         <div class="container hero-content">
             <h2 class="fade-in-up">Building Your Digital Workforce.</h2>
@@ -58,13 +99,78 @@
         </div>
     </section>
 
+    <!-- Main Content Wrapper (for content below the hero) -->
+    <div class="main-content-wrapper">
+
+        <!-- Insights/Banner Section (New - with parallax-like effect) -->
+        <section class="insights-banner-section reveal-on-load">
+            <div class="banner-content">
+                <h3 class="banner-text" data-speed="0.8">From your daily grind to strategic growth.</h3>
+            </div>
+            <div class="banner-background" data-speed="0.2">
+                <!-- Placeholder for background image -->
+                <!-- Expected format: large JPG/PNG, high resolution for parallax -->
+                <img src="images/banner-placeholder.jpg" alt="Abstract AI background">
+                <!-- Replace 'images/banner-placeholder.jpg' with your actual image path. -->
+            </div>
+        </section>
+
+        <!-- Placeholder for more content if needed on the home page -->
+        <section class="home-content-placeholder page-section">
+            <div class="container">
+                <h3 class="fade-in-up">Explore Our Solutions</h3>
+                <p class="fade-in-up delay-1">Discover how Echo Being can revolutionize your business operations.</p>
+                <a href="services.html" class="btn btn-secondary fade-in-up delay-2">View All Services</a>
+            </div>
+        </section>
+
+    </div> <!-- /main-content-wrapper -->
+
+    <!-- Footer Section -->
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 Echo Being. All Rights Reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-col footer-branding">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="images/logo-placeholder-white.svg" alt="Echo Being Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">Echo Being</span>
+                    </a>
+                    <p class="tagline">Intelligent AI Automation</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col footer-nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact">
+                    <h4>Get in touch</h4>
+                    <p><a href="mailto:hello@echobeing.com">hello@echobeing.com</a></p>
+                    <p>+1 (555) 123-4567</p>
+                    <p>123 AI Innovation Drive, Tech City, TX 78701</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Echo Being. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Main JavaScript file -->
     <script src="js/main.js"></script>
+    <!-- JavaScript for the hero canvas animation -->
     <script src="js/hero-canvas-animation.js"></script>
 </body>
 </html>

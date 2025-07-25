@@ -4,102 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - Echo Being</title>
+    <!-- Poppins font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome for icons (e.g., menu icon) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
+    <!-- Header Section (Common to all pages) -->
     <header class="main-header">
         <div class="container">
             <div class="logo">
-                <img src="images/logo-placeholder.svg" alt="Echo Being Logo" class="logo-img">
-                <span class="logo-text">Echo Being</span>
+                <a href="index.html" class="logo-link" aria-label="Go to Home Page">
+                    <img src="images/logo-placeholder.svg" alt="Echo Being Logo" class="logo-img">
+                    <span class="logo-text">Echo Being</span>
+                </a>
             </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+            <!-- Desktop navigation is removed, all navigation is through hamburger menu -->
             <button class="menu-toggle" aria-label="Open Menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
 
+    <!-- Mobile Navigation Overlay (Full Page - Always active via JS logic) -->
     <nav class="mobile-nav-overlay">
         <button class="close-menu" aria-label="Close Menu">
             <i class="fas fa-times"></i>
         </button>
-        <ul class="mobile-menu-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">What we do</a></li>
-            <li><a href="#">Offers </a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="#">Thinking </a></li>
-            <li><a href="about.html">Who we are</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="#">Developers </a></li>
-            <li><a href="#">Projects and Products </a></li>
-            <li><a href="contact.html">Get in touch</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+        <div class="mobile-menu-content container">
+            <ul class="mobile-menu-list main-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <!-- Footer content inside the mobile menu, pushed to the bottom -->
+            <div class="mobile-menu-footer">
+                <div class="footer-grid">
+                    <div class="footer-col footer-branding">
+                        <a href="index.html" class="footer-logo-link">
+                            <img src="images/logo-placeholder-white.svg" alt="Echo Being Logo" class="footer-logo-img">
+                            <span class="footer-logo-text">Echo Being</span>
+                        </a>
+                        <p class="tagline">Intelligent AI Automation</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col footer-nav">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col footer-contact">
+                        <h4>Get in touch</h4>
+                        <p><a href="mailto:hello@echobeing.com">hello@echobeing.com</a></p>
+                        <p>+1 (555) 123-4567</p>
+                        <p>123 AI Innovation Drive, Tech City, TX 78701</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Echo Being. All Rights Reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
 
+    <!-- Services Section -->
     <section id="services-page" class="page-section services-section reveal-on-load">
         <div class="container">
             <h2 class="page-title fade-in-up">Our Core Services</h2>
             <p class="page-subtitle fade-in-up delay-1">Innovating your operations with intelligent automation and virtual agents.</p>
-            <div class="services-grid">
-                <div class="service-card reveal-item fade-in-up delay-2">
-                    <div class="service-icon-wrapper">
-                        <img src="images/icon-automation-placeholder.svg" alt="AI Automation Icon" class="service-icon">
+            
+            <!-- Content that appears after scrolling -->
+            <div class="content-after-intro">
+                <div class="services-grid">
+                    <div class="service-card reveal-item fade-in-up delay-2">
+                        <div class="service-icon-wrapper">
+                            <!-- Placeholder for service icon 1 -->
+                            <!-- Expected size: approx. 60x60px, SVG recommended -->
+                            <img src="images/icon-automation-placeholder.svg" alt="AI Automation Icon" class="service-icon">
+                            <!-- Replace 'images/icon-automation-placeholder.svg' with your actual icon path -->
                         </div>
-                    <div class="service-text">
-                        <h4>AI Task Automation</h4>
-                        <p>We analyze your daily operations and deploy intelligent bots to automate repetitive tasks, freeing up your team to focus on what matters most.</p>
+                        <div class="service-text">
+                            <h4><span>AI Task Automation</span></h4>
+                            <p><span>We analyze your daily operations and deploy intelligent bots to automate repetitive tasks, freeing up your team to focus on what matters most.</span></p>
+                        </div>
                     </div>
-                </div>
-                <div class="service-card reveal-item fade-in-up delay-3">
-                    <div class="service-icon-wrapper">
-                        <img src="images/icon-virtual-agent-placeholder.svg" alt="Virtual Agent Icon" class="service-icon">
+                    <div class="service-card reveal-item fade-in-up delay-3">
+                        <div class="service-icon-wrapper">
+                            <!-- Placeholder for service icon 2 -->
+                            <!-- Expected size: approx. 60x60px, SVG recommended -->
+                            <img src="images/icon-virtual-agent-placeholder.svg" alt="Virtual Agent Icon" class="service-icon">
+                        </div>
+                        <div class="service-text">
+                            <h4><span>Custom Virtual Agents</span></h4>
+                            <p><span>From 24/7 customer support to dynamic sales outreach, our custom-built virtual persons act as seamless extensions of your team, available via phone or video.</span></p>
+                        </div>
                     </div>
-                    <div class="service-text">
-                        <h4>Custom Virtual Agents</h4>
-                        <p>From 24/7 customer support to dynamic sales outreach, our custom-built virtual persons act as seamless extensions of your team, available via phone or video.</p>
+                    <div class="service-card reveal-item fade-in-up delay-4">
+                        <div class="service-icon-wrapper">
+                            <!-- Placeholder for service icon 3 -->
+                            <img src="images/icon-data-analytics-placeholder.svg" alt="Data Analytics Icon" class="service-icon">
+                        </div>
+                        <div class="service-text">
+                            <h4><span>Data-Driven Insights</span></h4>
+                            <p><span>Leverage the power of AI to analyze vast datasets, uncover hidden patterns, and make informed business decisions with predictive analytics.</span></p>
+                        </div>
                     </div>
-                </div>
-                <div class="service-card reveal-item fade-in-up delay-4">
-                    <div class="service-icon-wrapper">
-                        <img src="images/icon-data-analytics-placeholder.svg" alt="Data Analytics Icon" class="service-icon">
-                    </div>
-                    <div class="service-text">
-                        <h4>Data-Driven Insights</h4>
-                        <p>Leverage the power of AI to analyze vast datasets, uncover hidden patterns, and make informed business decisions with predictive analytics.</p>
-                    </div>
-                </div>
-                <div class="service-card reveal-item fade-in-up delay-5">
-                    <div class="service-icon-wrapper">
-                        <img src="images/icon-integration-placeholder.svg" alt="Integration Icon" class="service-icon">
-                    </div>
-                    <div class="service-text">
-                        <h4>Seamless System Integration</h4>
-                        <p>Integrate AI solutions effortlessly into your existing infrastructure, ensuring smooth workflow transitions and maximum compatibility.</p>
+                    <div class="service-card reveal-item fade-in-up delay-5">
+                        <div class="service-icon-wrapper">
+                            <!-- Placeholder for service icon 4 -->
+                            <img src="images/icon-integration-placeholder.svg" alt="Integration Icon" class="service-icon">
+                        </div>
+                        <div class="service-text">
+                            <h4><span>Seamless System Integration</span></h4>
+                            <p><span>Integrate AI solutions effortlessly into your existing infrastructure, ensuring smooth workflow transitions and maximum compatibility.</span></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer Section (Common to all pages) -->
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 Echo Being. All Rights Reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-col footer-branding">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="images/logo-placeholder-white.svg" alt="Echo Being Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">Echo Being</span>
+                    </a>
+                    <p class="tagline">Intelligent AI Automation</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col footer-nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact">
+                    <h4>Get in touch</h4>
+                    <p><a href="mailto:hello@echobeing.com">hello@echobeing.com</a></p>
+                    <p>+1 (555) 123-4567</p>
+                    <p>123 AI Innovation Drive, Tech City, TX 78701</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Echo Being. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Main JavaScript file -->
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -4,13 +4,15 @@
     --primary-blue-light: #00CCFF; /* Lighter blue/cyan from logo */
     --gradient-start: #0080B3;
     --gradient-end: #00CCFF;
-    --background-light-grey: #F5F5F5; /* A slightly lighter grey for background */
-    --text-dark: #333333;
+    --background-main: #EAE6DD; /* IDEO-inspired main background color */
+    --text-dark: #222222; /* IDEO-inspired darker text color */
     --text-light: #FFFFFF;
-    --border-color: #E0E0E0;
-    --shadow-color: rgba(0, 0, 0, 0.08);
+    --border-color: #D0D0D0; /* Lighter border for minimalistic look */
+    --shadow-color: rgba(0, 0, 0, 0.05); /* Lighter shadow for minimalistic look */
     --transition-speed: 0.3s;
-    --highlight-color: rgba(0, 204, 255, 0.3); /* Semi-transparent light blue for highlight */
+    --highlight-color: rgba(255, 255, 0, 0.5); /* Yellow-like highlight, adjust if needed */
+    --dark-grey-footer: #222222; /* Darker grey for footer background */
+    --light-grey-footer-text: #AAAAAA; /* Lighter grey for footer text */
 }
 
 /* Base styles */
@@ -24,14 +26,14 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    background-color: var(--background-light-grey);
+    background-color: var(--background-main); /* Consistent background */
     overflow-x: hidden; /* Prevent horizontal scroll due to animations */
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 60px; /* Increased padding for more space */
 }
 
 a {
@@ -69,14 +71,14 @@ p {
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 14px 30px;
-    border-radius: 50px;
+    padding: 18px 40px; /* Increased padding for bigger buttons */
+    border-radius: 0px; /* Squared buttons */
     font-weight: 600;
     text-align: center;
     transition: all var(--transition-speed) ease;
     border: none;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.1em; /* Slightly larger font */
 }
 
 .btn-primary {
@@ -91,7 +93,7 @@ p {
 }
 
 .btn-secondary {
-    background-color: var(--text-light);
+    background-color: var(--background-main); /* Match page background */
     color: var(--primary-blue-dark);
     border: 2px solid var(--primary-blue-dark);
     box-shadow: 0 4px 8px var(--shadow-color);
@@ -106,14 +108,20 @@ p {
 
 /* Header */
 .main-header {
-    background-color: var(--text-light);
-    padding: 15px 0;
-    box-shadow: 0 2px 10px var(--shadow-color);
+    background-color: var(--background-main); /* Match page background */
+    padding: 40px 0; /* Even larger default padding for bigger header */
+    box-shadow: none; /* No shadow by default for minimalistic look */
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
+    transition: all 0.3s ease-in-out; /* Smooth transition for header size change */
+}
+
+.main-header.scrolled {
+    padding: 15px 0; /* Significantly smaller padding when scrolled */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow when scrolled */
 }
 
 .main-header .container {
@@ -122,73 +130,73 @@ p {
     align-items: center;
 }
 
-.logo {
+.logo-link {
     display: flex;
     align-items: center;
-    font-size: 1.8em;
-    font-weight: 700;
+    text-decoration: none; /* Remove underline from the logo link */
     color: var(--primary-blue-dark);
+    transition: all 0.3s ease-in-out; /* Smooth transition for logo size change */
+}
+
+.main-header.scrolled .logo-link {
+    transform: scale(0.8); /* More significant shrink for logo when scrolled */
+}
+
+
+.logo-text {
+    font-size: 2.5em; /* Bigger default font size */
+    font-weight: 700;
+    color: var(--text-dark); /* Use main text color */
+    transition: font-size 0.3s ease-in-out;
+}
+
+.main-header.scrolled .logo-text {
+    font-size: 1.8em; /* Smaller text when scrolled */
 }
 
 .logo-img {
-    height: 40px; /* Adjust as needed */
+    height: 60px; /* Bigger default height */
     width: auto;
-    margin-right: 10px;
+    margin-right: 20px; /* More space */
+    transition: height 0.3s ease-in-out, margin-right 0.3s ease-in-out;
     /* Placeholder SVG for logo */
     background-color: var(--primary-blue-light); /* Placeholder color */
-    border-radius: 5px;
+    border-radius: 0px; /* Squared */
 }
+.main-header.scrolled .logo-img {
+    height: 40px; /* Smaller image when scrolled */
+    margin-right: 15px;
+}
+
 /* If you replace with an actual image, remove the background-color and border-radius */
 .logo-img[src*="logo-placeholder.svg"] {
     content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%2300CCFF"/><text x="50%" y="60%" font-family="Arial" font-size="40" fill="%23FFFFFF" text-anchor="middle" alignment-baseline="middle">EB</text></svg>');
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
+    height: 60px; /* Ensure placeholder matches new default size */
+    width: 60px;
+    border-radius: 0px; /* Match new squared style */
 }
 
 
-.main-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-.main-nav ul li {
-    margin-left: 30px;
-}
-
-.main-nav ul li a {
-    font-weight: 600;
-    padding: 5px 0;
-    position: relative;
-}
-
-.main-nav ul li a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--primary-blue-light);
-    transition: width var(--transition-speed) ease-out;
-}
-
-.main-nav ul li a:hover::after,
-.main-nav ul li a.active::after {
-    width: 100%;
+.main-nav {
+    display: none; /* Desktop nav always hidden */
 }
 
 .menu-toggle {
-    display: none; /* Hidden on desktop */
+    display: block; /* Hamburger icon always visible */
     background: none;
     border: none;
-    font-size: 1.8em;
-    color: var(--primary-blue-dark);
+    font-size: 2.5em; /* Larger icon */
+    color: var(--text-dark); /* Use main text color */
     cursor: pointer;
     padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+}
+.main-header.scrolled .menu-toggle {
+    font-size: 2em; /* Smaller icon when scrolled */
 }
 
-/* Mobile Navigation Overlay (Full Page) */
+
+/* Mobile Navigation Overlay (Full Page - Always active, IDEO.com inspired) */
 .mobile-nav-overlay {
     position: fixed;
     top: 0;
@@ -198,8 +206,8 @@ p {
     background-color: var(--primary-blue-dark); /* Dark blue background */
     z-index: 1001;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: column; /* Stack main content and footer vertically */
+    justify-content: space-between; /* Push main links to top, footer to bottom */
     align-items: center;
     transform: translateX(100%); /* Start off-screen */
     transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1); /* Smooth, slightly bouncy transition */
@@ -215,11 +223,11 @@ p {
 
 .mobile-nav-overlay .close-menu {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 40px; /* More spacing from top */
+    right: 60px; /* Match container padding */
     background: none;
     border: none;
-    font-size: 3em; /* Larger close button */
+    font-size: 3.5em; /* Even larger close button */
     color: var(--text-light);
     cursor: pointer;
     z-index: 1002;
@@ -230,38 +238,49 @@ p {
     transform: rotate(90deg);
 }
 
-.mobile-menu-list {
-    list-style: none;
-    text-align: center;
-    padding: 0;
-    opacity: 0; /* Hidden initially */
-    transform: translateY(20px);
-    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s; /* Delay for menu items */
+.mobile-menu-content {
+    display: flex; /* Use flex for main links, allow it to grow */
+    flex-direction: column;
+    justify-content: center; /* Center main links vertically */
+    align-items: flex-start; /* Align main links to the left */
+    flex-grow: 1; /* Allow this section to take up available space */
+    padding: 20px 60px; /* Match container padding */
+    width: 100%; /* Take full width */
+    max-width: 1000px; /* Wider menu content area */
+    /* Removed opacity and transform here to allow the whole content to slide */
+    /* Individual items will still fade in with their animation-delay */
 }
 
-.mobile-nav-overlay.open .mobile-menu-list {
-    opacity: 1;
-    transform: translateY(0);
+.mobile-menu-list {
+    list-style: none;
+    text-align: left; /* Align text to left within columns */
+    padding: 0;
+}
+
+.mobile-menu-list.main-links {
+    margin-bottom: 40px; /* Space between main links and footer */
 }
 
 .mobile-menu-list li {
-    margin: 15px 0; /* Slightly smaller margin */
+    margin: 15px 0; /* More margin between list items */
     overflow: hidden; /* Hide overflow for staggered animation */
 }
 
 .mobile-menu-list li a {
     color: var(--text-light);
-    font-size: 2.5em; /* Larger font size */
+    font-size: 3em; /* Very large font size for menu options */
     font-weight: 600;
     transition: color var(--transition-speed) ease, transform 0.3s ease;
     display: inline-block; /* For transform */
     position: relative;
     padding-bottom: 5px; /* Space for underline */
+    opacity: 0; /* Start hidden for staggered animation */
+    transform: translateY(20px); /* Start below for staggered animation */
 }
 
-.mobile-menu-list li a:hover {
-    color: var(--primary-blue-light);
-    transform: translateX(10px); /* Slight movement on hover */
+.mobile-nav-overlay.open .mobile-menu-list li a {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Staggered animation for mobile menu items */
@@ -269,13 +288,85 @@ p {
 .mobile-nav-overlay.open .mobile-menu-list li:nth-child(2) a { transition-delay: 0.15s; }
 .mobile-nav-overlay.open .mobile-menu-list li:nth-child(3) a { transition-delay: 0.2s; }
 .mobile-nav-overlay.open .mobile-menu-list li:nth-child(4) a { transition-delay: 0.25s; }
-.mobile-nav-overlay.open .mobile-menu-list li:nth-child(5) a { transition-delay: 0.3s; }
-.mobile-nav-overlay.open .mobile-menu-list li:nth-child(6) a { transition-delay: 0.35s; }
-.mobile-nav-overlay.open .mobile-menu-list li:nth-child(7) a { transition-delay: 0.4s; }
-.mobile-nav-overlay.open .mobile-menu-list li:nth-child(8) a { transition-delay: 0.45s; }
-.mobile-nav-overlay.open .mobile-menu-list li:nth-child(9) a { transition-delay: 0.5s; }
-.mobile-nav-overlay.open .mobile-menu-list li:nth-child(10) a { transition-delay: 0.55s; }
-.mobile-nav-overlay.open .mobile-menu-list li:nth-child(11) a { transition-delay: 0.6s; }
+
+
+/* Footer content inside the mobile menu */
+.mobile-menu-footer {
+    width: 100%;
+    background-color: var(--dark-grey-footer); /* Match main footer background */
+    color: var(--light-grey-footer-text);
+    padding: 40px 60px 20px; /* Match main footer padding */
+    /* Removed opacity and transform here to allow it to slide with the menu-content */
+}
+
+.mobile-menu-footer .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns for footer */
+    gap: 30px;
+    text-align: left;
+    padding-bottom: 20px; /* Less padding, as it's inside menu */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-footer .footer-col h4 {
+    color: var(--text-light);
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.mobile-menu-footer .footer-branding .footer-logo-link {
+    justify-content: flex-start; /* Align logo left */
+}
+
+.mobile-menu-footer .footer-branding .footer-logo-img {
+    height: 40px; /* Smaller logo in menu footer */
+    width: 40px;
+    margin-right: 10px;
+}
+
+.mobile-menu-footer .footer-branding .footer-logo-text {
+    font-size: 1.6em; /* Smaller text in menu footer */
+}
+
+.mobile-menu-footer .tagline,
+.mobile-menu-footer .social-links a,
+.mobile-menu-footer .footer-contact p,
+.mobile-menu-footer .footer-legal ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9em;
+}
+
+.mobile-menu-footer .social-links a {
+    font-size: 1.5em;
+    margin-right: 15px;
+}
+
+.mobile-menu-footer .footer-legal ul {
+    list-style: none;
+    padding: 0;
+}
+.mobile-menu-footer .footer-legal ul li {
+    margin-bottom: 5px;
+}
+
+.mobile-menu-footer .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    flex-wrap: wrap;
+    text-align: left; /* Align copyright left */
+}
+.mobile-menu-footer .footer-bottom p {
+    margin: 0;
+}
+.mobile-menu-footer .footer-bottom .footer-legal {
+    display: flex;
+    gap: 15px;
+}
+.mobile-menu-footer .footer-bottom .footer-legal a {
+    margin: 0;
+}
 
 
 /* Hero Section (index.html specific) */
@@ -289,6 +380,7 @@ p {
     color: var(--text-light); /* Text color for hero section */
     overflow: hidden; /* Ensure canvas doesn't overflow */
     padding-top: 80px; /* Space for fixed header */
+    z-index: 5; /* Ensure hero is above main content wrapper initially */
 }
 
 #hero-canvas {
@@ -309,7 +401,7 @@ p {
 
 .hero-content h2 {
     color: var(--text-light);
-    font-size: 4.5em;
+    font-size: 4.5em; /* Large captivating font */
     margin-bottom: 25px;
     font-weight: 700;
 }
@@ -321,76 +413,116 @@ p {
     opacity: 0.9;
 }
 
+/* Main Content Wrapper for Home Page */
+.main-content-wrapper {
+    position: relative; /* Establishes new stacking context */
+    z-index: 10; /* Ensures content below hero appears above it */
+    background-color: var(--background-main); /* Match body background */
+}
 
 /* Page Sections (for services.html, about.html, contact.html) */
 .page-section {
-    padding: 120px 0; /* More padding for full page sections */
-    min-height: calc(100vh - 80px - 90px); /* Full viewport height minus header and footer */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 100vh; /* Ensure it's at least viewport height */
+    display: flex; /* Use flex to control internal layout */
     flex-direction: column;
-    text-align: center;
+    justify-content: flex-start; /* Align content to the top */
+    align-items: flex-start; /* Align content to the left */
+    text-align: left; /* Default text align */
     position: relative;
     z-index: 10;
+    padding-left: 60px; /* Match container padding */
+    padding-right: 60px; /* Match container padding */
+    padding-top: calc(100px + 60px); /* Space for header + additional space */
+    padding-bottom: 120px;
+}
+
+.page-section .container {
+    max-width: 1200px; /* Ensure content is within container limits */
+    margin: 0; /* Remove auto margin to respect flex-start */
+    width: 100%; /* Take full width of parent */
+    padding: 0; /* Remove container's own padding */
 }
 
 .page-title {
-    font-size: 3.5em;
-    margin-bottom: 20px;
-    color: var(--primary-blue-dark);
+    font-size: 8vw; /* HUGE captivating font for intro pages, scales with viewport width */
+    line-height: 1; /* Tighter line height for huge text */
+    margin-bottom: 0.2em; /* Relative margin */
+    color: var(--text-dark);
+    max-width: 100%; /* Allow it to take full width */
+    padding-top: 10vh; /* Push title down to cover more of the screen initially */
 }
 
 .page-subtitle {
-    font-size: 1.2em;
-    margin-bottom: 40px;
-    color: #555;
+    font-size: 2.5vw; /* Larger subtitle, scales with viewport width */
+    line-height: 1.3;
+    margin-bottom: 0; /* No bottom margin initially */
+    color: var(--text-dark);
+    max-width: 80%; /* Limit width */
+}
+
+/* Content that appears after scrolling on intro pages */
+.content-after-intro {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+    padding-top: 100px; /* Space from the initial intro text block */
+    width: 100%; /* Take full width */
+    text-align: left; /* Ensure content is left-aligned */
+}
+
+body.page-loaded .page-section .content-after-intro {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s; /* Delay for content to appear after intro text */
 }
 
 /* Services Page Specific */
 .services-section {
-    background-color: var(--background-light-grey);
+    background-color: var(--background-main);
 }
 
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    justify-content: center;
+    gap: 60px; /* More space between cards */
+    justify-content: center; /* Center the grid items */
     align-items: stretch; /* Ensure cards have equal height */
-    margin-top: 50px;
+    margin-top: 80px; /* More space from subtitle */
+    padding: 0; /* Remove internal padding, container handles it */
 }
 
 .service-card {
-    background-color: var(--text-light);
-    border-radius: 15px;
-    padding: 40px;
-    text-align: center;
-    box-shadow: 0 10px 30px var(--shadow-color);
-    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Longer transition for zoom */
-    border: 1px solid var(--border-color);
+    background-color: var(--text-light); /* White background for service cards */
+    border-radius: 0px; /* Squared corners */
+    padding: 50px; /* More internal padding */
+    text-align: left; /* Align text to left within cards */
+    box-shadow: none; /* No box shadow by default */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+    border: 1px solid var(--border-color); /* Add border for definition */
     position: relative; /* For text highlighting */
     overflow: hidden; /* Ensure no overflow during zoom */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Align content to the left inside card */
 }
 
 .service-card:hover {
-    transform: translateY(-10px) scale(1.03); /* Lift and slightly zoom */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px) scale(1.02); /* Lift and slightly zoom */
+    box-shadow: 0 15px 40px var(--shadow-color); /* Reintroduce subtle shadow on hover */
+    background-color: var(--text-light); /* Ensure background is solid white on hover */
 }
 
 .service-icon-wrapper {
-    width: 90px; /* Slightly larger icon wrapper */
+    width: 90px;
     height: 90px;
     background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
-    border-radius: 50%;
+    border-radius: 0px; /* Squared icon wrapper */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto 30px; /* Increased margin */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 0 0 30px; /* Align left and provide bottom margin */
+    box-shadow: none; /* Remove shadow */
     transition: transform 0.4s ease; /* Transition for icon zoom */
 }
 
@@ -399,18 +531,11 @@ p {
 }
 
 .service-icon {
-    width: 65px; /* Adjust as needed */
-    height: 65px; /* Adjust as needed */
+    width: 65px;
+    height: 65px;
     filter: brightness(0) invert(1); /* Makes SVG icons white */
-    /* Placeholder SVG for service icons */
-    background-color: transparent; /* No background needed for actual SVG */
 }
-/* If you replace with an actual image, remove the background-color */
-.service-icon[src*="placeholder.svg"] {
-    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>');
-    filter: none; /* Placeholder is already white */
-}
-/* Specific placeholders for different icons */
+/* Specific placeholders for different icons (retained) */
 .service-icon[src*="icon-automation-placeholder.svg"] {
     content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/></svg>');
 }
@@ -426,53 +551,49 @@ p {
 
 
 .service-card h4 {
-    font-size: 1.5em;
+    font-size: 1.6em; /* Slightly larger heading */
     margin-bottom: 15px;
-    color: var(--primary-blue-dark);
-    position: relative; /* For text highlighting */
-    z-index: 1; /* Ensure text is above highlight */
+    color: var(--text-dark);
 }
 
 .service-card p {
-    font-size: 0.95em;
-    color: #555;
-    position: relative; /* For text highlighting */
-    z-index: 1; /* Ensure text is above highlight */
+    font-size: 1em;
+    color: var(--text-dark); /* Use main text color */
+    line-height: 1.7;
 }
 
-/* Text highlighting effect */
-.service-card h4::after,
-.service-card p::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--highlight-color);
-    transform: scaleX(0); /* Start hidden */
-    transform-origin: left;
-    transition: transform 0.3s ease-out;
-    z-index: 0; /* Behind text */
+/* Text highlight via background-color on span */
+.service-card h4 span,
+.service-card p span {
+    position: relative;
+    display: inline; /* Ensure span wraps text correctly */
+    background-color: transparent; /* No background by default */
+    transition: background-color 0.3s ease-out; /* Smooth transition for highlight */
+    padding: 2px 4px; /* Small padding around highlighted text */
+    margin: -2px -4px; /* Compensate for padding to keep layout stable */
 }
 
-.service-card:hover h4::after,
-.service-card:hover p::after {
-    transform: scaleX(1); /* Reveal on hover */
+.service-card:hover h4 span,
+.service-card:hover p span {
+    background-color: var(--highlight-color); /* Solid highlight on hover */
 }
+
 
 /* About Page Specific */
 .about-section {
-    background-color: var(--text-light);
-    text-align: center;
+    background-color: var(--background-main);
 }
 
 .about-section p {
     max-width: 800px;
-    margin: 0 auto 20px auto;
+    margin: 0; /* Remove auto margin */
     font-size: 1.1em;
     line-height: 1.8;
 }
+.about-section p.fade-in-up {
+    margin-top: 30px; /* Space from title/subtitle */
+}
+
 
 #typing-text {
     position: relative;
@@ -494,8 +615,7 @@ p {
 
 /* Contact Page Specific */
 .contact-section {
-    background-color: var(--background-light-grey);
-    text-align: center;
+    background-color: var(--background-main);
 }
 
 .contact-section p {
@@ -514,21 +634,175 @@ p {
 .contact-info p {
     margin-bottom: 10px;
     font-size: 1em;
-    color: #555;
+    color: var(--text-dark);
 }
 .contact-info strong {
     color: var(--primary-blue-dark);
 }
 
 
-/* Footer */
+/* Footer - IDO.com inspired */
 .main-footer {
-    background-color: var(--text-dark);
-    color: var(--text-light);
-    padding: 30px 0;
-    text-align: center;
+    background-color: var(--dark-grey-footer);
+    color: var(--light-grey-footer-text);
+    padding: 60px 0 30px; /* More padding at top */
     font-size: 0.9em;
 }
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr; /* Adjust column widths as needed */
+    gap: 80px; /* More spacing between columns */
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+    text-align: left; /* Align grid content to left */
+}
+
+.footer-col h4 {
+    color: var(--text-light);
+    font-size: 1.2em;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.footer-branding .footer-logo-link {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    text-decoration: none;
+}
+
+.footer-branding .footer-logo-img {
+    height: 50px; /* Larger logo for footer */
+    width: auto;
+    margin-right: 15px;
+    filter: brightness(0) invert(1); /* Make it white for dark background */
+    /* Placeholder for white logo */
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23FFFFFF"/><text x="50%" y="60%" font-family="Arial" font-size="40" fill="%23000000" text-anchor="middle" alignment-baseline="middle">EB</text></svg>');
+}
+/* If you replace with actual white logo, remove content and filter */
+
+.footer-branding .footer-logo-text {
+    font-size: 2em; /* Larger text for footer logo */
+    font-weight: 700;
+    color: var(--text-light);
+}
+
+.footer-branding .tagline {
+    font-size: 1em;
+    color: var(--light-grey-footer-text);
+    margin-bottom: 25px;
+}
+
+.social-links a {
+    color: var(--light-grey-footer-text);
+    font-size: 1.8em;
+    margin-right: 20px;
+    transition: color var(--transition-speed) ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-blue-light);
+}
+
+.footer-nav ul, .footer-contact p {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav ul li {
+    margin-bottom: 10px;
+}
+
+.footer-nav ul li a, .footer-contact p {
+    color: var(--light-grey-footer-text);
+    font-size: 1em;
+    transition: color var(--transition-speed) ease;
+}
+
+.footer-nav ul li a:hover, .footer-contact p a:hover {
+    color: var(--text-light);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+    color: var(--light-grey-footer-text);
+}
+
+.footer-legal a {
+    color: var(--light-grey-footer-text);
+    margin-left: 20px;
+    transition: color var(--transition-speed) ease;
+}
+
+.footer-legal a:hover {
+    color: var(--text-light);
+}
+
+/* Insights/Banner Section (Parallax-like effect) */
+.insights-banner-section {
+    position: relative;
+    height: 450px; /* Increased height for the banner */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Crucial for parallax and containing images */
+    background-color: var(--background-main); /* Match page background */
+    padding: 0;
+}
+
+.banner-background {
+    position: absolute;
+    top: -10%; /* Start slightly above to allow vertical movement */
+    left: 0;
+    width: 100%;
+    height: 120%; /* Larger height to cover movement range */
+    z-index: 1;
+    pointer-events: none; /* Do not block clicks on text */
+    /* background-image: url('../images/banner-placeholder.jpg'); Remove if using <img> tag */
+    background-size: cover;
+    background-position: center;
+    will-change: transform; /* Optimize for animation */
+    transition: transform 0.1s linear; /* Smoother scrolling movement */
+}
+
+.banner-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block;
+    filter: brightness(0.6); /* Slightly darken image for text contrast */
+}
+
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px; /* Wider text area */
+    padding: 0 20px;
+}
+
+.banner-text {
+    font-size: 4em; /* Even larger, bold font */
+    color: var(--text-light);
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5); /* Text shadow for readability */
+    will-change: transform; /* Optimize for animation */
+    transition: transform 0.1s linear; /* Smoother scrolling movement */
+    line-height: 1.2;
+}
+
 
 /* --- General Animations (for all pages) --- */
 
@@ -587,12 +861,36 @@ body.page-loaded .reveal-item {
 
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
-    .main-nav {
-        display: none; /* Hide desktop nav */
+    .container {
+        padding: 0 40px;
+    }
+    .main-header {
+        padding: 25px 0;
+    }
+    .main-header.scrolled {
+        padding: 12px 0;
+    }
+
+    .logo-text {
+        font-size: 2.2em;
+    }
+    .main-header.scrolled .logo-text {
+        font-size: 1.6em;
+    }
+    .logo-img {
+        height: 50px;
+        margin-right: 15px;
+    }
+    .main-header.scrolled .logo-img {
+        height: 35px;
+        margin-right: 10px;
     }
 
     .menu-toggle {
-        display: block; /* Show mobile menu toggle */
+        font-size: 2.2em;
+    }
+    .main-header.scrolled .menu-toggle {
+        font-size: 1.8em;
     }
 
     .hero-content h2 {
@@ -603,55 +901,176 @@ body.page-loaded .reveal-item {
         font-size: 1.3em;
     }
 
+    .page-section {
+        padding-left: 40px;
+        padding-right: 40px;
+        /* Removed fixed padding-top based on vh, rely on flex-centering for intro */
+        justify-content: center; /* Center content vertically */
+    }
+
     .page-title {
-        font-size: 2.8em;
+        font-size: 6vw; /* Adjusted for tablet */
+        position: static; /* Back to normal flow */
+        transform: none;
+        margin-bottom: 0.3em;
     }
 
     .page-subtitle {
-        font-size: 1.1em;
+        font-size: 2vw; /* Adjusted for tablet */
+        position: static; /* Back to normal flow */
+        transform: none;
+        margin-bottom: 0.5em;
+    }
+
+    .services-grid {
+        gap: 40px; /* Adjust gap for smaller screens */
     }
 
     .service-card {
-        padding: 30px;
+        padding: 40px; /* Slightly less padding */
     }
 
+    .mobile-nav-overlay .close-menu {
+        right: 40px;
+    }
+
+    .mobile-menu-content {
+        gap: 40px; /* Adjust gap for smaller screens */
+        grid-template-columns: 1fr; /* Stack main links on smaller tablets */
+        align-items: center; /* Center items when stacked */
+        text-align: center; /* Center text when stacked */
+    }
     .mobile-menu-list li a {
-        font-size: 2em;
+        font-size: 2.5em; /* Slightly smaller for tablets */
+    }
+    .mobile-menu-list.main-links {
+        margin-bottom: 20px; /* Adjust margin */
+    }
+
+    .mobile-menu-footer {
+        padding: 30px 40px 20px;
+    }
+    .mobile-menu-footer .footer-grid {
+        grid-template-columns: 1fr; /* Stack footer columns in menu */
+        text-align: center;
+    }
+    .mobile-menu-footer .footer-branding .footer-logo-link {
+        justify-content: center;
+    }
+    .mobile-menu-footer .social-links {
+        justify-content: center;
+    }
+
+
+    .insights-banner-section {
+        height: 350px; /* Adjust height for tablet */
+    }
+
+    .banner-text {
+        font-size: 3em; /* Adjust font size for tablet */
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr; /* Stack columns on tablet */
+        text-align: center;
+    }
+
+    .footer-col {
+        margin-bottom: 30px;
+    }
+
+    .footer-branding, .footer-nav, .footer-contact {
+        align-items: center; /* Center content when stacked */
+    }
+
+    .footer-logo-link {
+        justify-content: center; /* Center logo link */
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column; /* Stack footer bottom elements */
+    }
+
+    .footer-legal {
+        margin-top: 10px;
+    }
+    .footer-legal a {
+        margin: 0 10px; /* Adjust margin between legal links */
     }
 }
 
 @media (max-width: 768px) {
-    .main-header .container {
-        padding: 0 15px;
+    .container {
+        padding: 0 20px;
+    }
+    .main-header {
+        padding: 20px 0;
+    }
+    .main-header.scrolled {
+        padding: 10px 0;
     }
 
-    .logo {
+    .logo-text {
+        font-size: 2em;
+    }
+    .main-header.scrolled .logo-text {
         font-size: 1.5em;
+    }
+    .logo-img {
+        height: 45px;
+        margin-right: 10px;
+    }
+    .main-header.scrolled .logo-img {
+        height: 30px;
+        margin-right: 8px;
+    }
+
+    .menu-toggle {
+        font-size: 2em;
+    }
+    .main-header.scrolled .menu-toggle {
+        font-size: 1.6em;
     }
 
     .hero-content h2 {
-        font-size: 2.8em;
+        font-size: 3em;
     }
 
     .hero-content .subtitle {
-        font-size: 1.1em;
+        font-size: 1.2em;
     }
 
     .page-section {
-        padding: 100px 0;
-        min-height: auto; /* Allow content to dictate height on smaller screens */
+        padding-left: 20px;
+        padding-right: 20px;
+        /* Removed fixed padding-top based on vh, rely on flex-centering for intro */
+        justify-content: center; /* Center content vertically */
     }
 
     .page-title {
-        font-size: 2.2em;
+        font-size: 8vw; /* Adjusted for mobile, keep it very large */
+        position: static; /* Back to normal flow */
+        transform: none;
+        margin-bottom: 0.3em;
     }
 
     .page-subtitle {
-        font-size: 1em;
+        font-size: 3vw; /* Adjusted for mobile */
+        position: static; /* Back to normal flow */
+        transform: none;
+        margin-bottom: 0.5em;
+    }
+
+    .services-grid {
+        gap: 30px; /* Reduce gap between service cards */
     }
 
     .service-card {
-        padding: 25px;
+        padding: 30px;
     }
 
     .service-icon-wrapper {
@@ -666,36 +1085,103 @@ body.page-loaded .reveal-item {
     }
 
     .btn {
-        padding: 12px 25px;
-        font-size: 0.9em;
+        padding: 15px 30px;
+        font-size: 1em;
     }
 
     .mobile-nav-overlay .close-menu {
-        font-size: 2em;
+        font-size: 2.5em;
         top: 20px;
         right: 20px;
     }
 
+    .mobile-menu-content {
+        gap: 20px;
+    }
+
     .mobile-menu-list li a {
-        font-size: 1.8em;
+        font-size: 2em;
+    }
+
+    .mobile-menu-footer {
+        padding: 30px 20px 20px;
+    }
+    .mobile-menu-footer .footer-grid {
+        gap: 20px;
+    }
+
+
+    .insights-banner-section {
+        height: 300px;
+    }
+
+    .banner-text {
+        font-size: 2.5em;
     }
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    .main-header {
+        padding: 15px 0;
+    }
+    .main-header.scrolled {
+        padding: 8px 0;
+    }
+
+    .logo-text {
+        font-size: 1.8em;
+    }
+    .main-header.scrolled .logo-text {
+        font-size: 1.3em;
+    }
+    .logo-img {
+        height: 35px;
+        margin-right: 8px;
+    }
+    .main-header.scrolled .logo-img {
+        height: 25px;
+        margin-right: 6px;
+    }
+
+    .menu-toggle {
+        font-size: 1.8em;
+    }
+    .main-header.scrolled .menu-toggle {
+        font-size: 1.4em;
+    }
+
     .hero-content h2 {
-        font-size: 2em;
+        font-size: 2.5em;
     }
 
     .hero-content .subtitle {
         font-size: 1em;
     }
 
+    .page-section {
+        padding-left: 15px;
+        padding-right: 15px;
+        /* Removed fixed padding-top based on vh, rely on flex-centering for intro */
+        justify-content: center; /* Center content vertically */
+    }
+
     .page-title {
-        font-size: 1.8em;
+        font-size: 10vw; /* Even bigger for smallest screens */
+    }
+
+    .page-subtitle {
+        font-size: 4vw; /* Even bigger for smallest screens */
+    }
+
+    .services-grid {
+        gap: 20px;
     }
 
     .service-card {
-        padding: 20px;
+        padding: 25px;
     }
 
     .service-card h4 {
@@ -703,15 +1189,41 @@ body.page-loaded .reveal-item {
     }
 
     .service-card p {
-        font-size: 0.85em;
-    }
-
-    .mobile-menu-list li a {
-        font-size: 1.5em;
-    }
-
-    .contact-info {
-        padding: 15px;
         font-size: 0.9em;
+    }
+
+    .mobile-nav-overlay .close-menu {
+        font-size: 2em;
+        top: 15px;
+        right: 15px;
+    }
+    
+    .mobile-menu-list li a {
+        font-size: 1.8em;
+    }
+
+    .mobile-menu-footer {
+        padding: 20px 15px;
+    }
+    .mobile-menu-footer .footer-grid {
+        gap: 15px;
+    }
+
+    .insights-banner-section {
+        height: 250px;
+    }
+
+    .banner-text {
+        font-size: 1.8em;
+    }
+
+    .footer-grid {
+        gap: 20px;
+    }
+    .footer-bottom {
+        padding-top: 20px;
+    }
+    .footer-legal a {
+        margin: 0 8px;
     }
 }
