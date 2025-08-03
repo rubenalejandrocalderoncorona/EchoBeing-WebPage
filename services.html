@@ -34,51 +34,38 @@
         <button class="close-menu" aria-label="Close Menu">
             <i class="fas fa-times"></i>
         </button>
-        <div class="mobile-menu-content container">
-            <ul class="mobile-menu-list main-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+        <div class="mobile-menu-content">
+            <!-- "What We Do" Column -->
+            <div class="mobile-menu-col">
+                <h4>What We Do</h4>
+                <ul class="mobile-menu-list">
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Our Approach</a></li>
+                </ul>
+            </div>
 
-            <!-- Footer content inside the mobile menu, pushed to the bottom -->
-            <div class="mobile-menu-footer">
-                <div class="footer-grid">
-                    <div class="footer-col footer-branding">
-                        <a href="index.html" class="footer-logo-link">
-                            <img src="images/logo-placeholder-white.svg" alt="Echo Being Logo" class="footer-logo-img">
-                            <span class="footer-logo-text">Echo Being</span>
-                        </a>
-                        <p class="tagline">Intelligent AI Automation</p>
-                        <div class="social-links">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
-                        </div>
-                    </div>
-                    <div class="footer-col footer-nav">
-                        <h4>Navigation</h4>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col footer-contact">
-                        <h4>Get in touch</h4>
-                        <p><a href="mailto:hello@echobeing.com">hello@echobeing.com</a></p>
-                        <p>+1 (555) 123-4567</p>
-                        <p>123 AI Innovation Drive, Tech City, TX 78701</p>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2025 Echo Being. All Rights Reserved.</p>
-                    <div class="footer-legal">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                    </div>
+            <!-- "Who We Are" Column -->
+            <div class="mobile-menu-col">
+                <h4>Who We Are</h4>
+                <ul class="mobile-menu-list">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+
+            <!-- "Get In Touch" Column -->
+            <div class="mobile-menu-col">
+                <h4>Get In Touch</h4>
+                <ul class="mobile-menu-list">
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Schedule Demo</a></li>
+                </ul>
+                <div class="mobile-menu-social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
                 </div>
             </div>
         </div>
@@ -96,9 +83,7 @@
                     <div class="service-card reveal-item fade-in-up delay-2">
                         <div class="service-icon-wrapper">
                             <!-- Placeholder for service icon 1 -->
-                            <!-- Expected size: approx. 60x60px, SVG recommended -->
                             <img src="images/icon-automation-placeholder.svg" alt="AI Automation Icon" class="service-icon">
-                            <!-- Replace 'images/icon-automation-placeholder.svg' with your actual icon path -->
                         </div>
                         <div class="service-text">
                             <h4><span>AI Task Automation</span></h4>
@@ -108,7 +93,6 @@
                     <div class="service-card reveal-item fade-in-up delay-3">
                         <div class="service-icon-wrapper">
                             <!-- Placeholder for service icon 2 -->
-                            <!-- Expected size: approx. 60x60px, SVG recommended -->
                             <img src="images/icon-virtual-agent-placeholder.svg" alt="Virtual Agent Icon" class="service-icon">
                         </div>
                         <div class="service-text">
@@ -134,6 +118,27 @@
                         <div class="service-text">
                             <h4><span>Seamless System Integration</span></h4>
                             <p><span>Integrate AI solutions effortlessly into your existing infrastructure, ensuring smooth workflow transitions and maximum compatibility.</span></p>
+                        </div>
+                    </div>
+                    <!-- Added two new service cards for symmetry -->
+                    <div class="service-card reveal-item fade-in-up delay-6">
+                        <div class="service-icon-wrapper">
+                            <!-- Placeholder for service icon 5 -->
+                            <img src="images/icon-consulting-placeholder.svg" alt="AI Consulting Icon" class="service-icon">
+                        </div>
+                        <div class="service-text">
+                            <h4><span>AI Strategy Consulting</span></h4>
+                            <p><span>We provide expert guidance to help you define and implement a robust AI strategy that aligns with your business goals and drives innovation.</span></p>
+                        </div>
+                    </div>
+                    <div class="service-card reveal-item fade-in-up delay-7">
+                        <div class="service-icon-wrapper">
+                            <!-- Placeholder for service icon 6 -->
+                            <img src="images/icon-security-placeholder.svg" alt="AI Security Icon" class="service-icon">
+                        </div>
+                        <div class="service-text">
+                            <h4><span>Intelligent Security Solutions</span></h4>
+                            <p><span>Protect your digital assets with AI-powered security systems that proactively detect threats, automate responses, and ensure data integrity.</span></p>
                         </div>
                     </div>
                 </div>

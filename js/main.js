@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
-    const closeMenu = document.querySelector('.close-menu');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-overlay ul.main-links li a'); // Target main links specifically
+    // Removed closeMenu as the menuToggle will now handle both open/close
+    const mobileNavLinks = document.querySelectorAll('.mobile-menu-list li a'); // Target all links within the new menu structure
     const mainHeader = document.querySelector('.main-header');
 
     // --- Mobile Menu Toggle ---
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
-            mobileNavOverlay.classList.add('open');
-            // Prevent scrolling when menu is open
-            document.body.style.overflow = 'hidden';
-        });
-    }
+            // Toggle the 'open' class on the overlay
+            mobileNavOverlay.classList.toggle('open');
+            // Toggle the 'is-active' class on the menu toggle for animation
+            menuToggle.classList.toggle('is-active');
 
-    if (closeMenu) {
-        closeMenu.addEventListener('click', () => {
-            mobileNavOverlay.classList.remove('open');
-            // Restore scrolling
-            document.body.style.overflow = '';
+            // Prevent/restore scrolling
+            if (mobileNavOverlay.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         });
     }
 
@@ -27,18 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => {
             // Allow the browser to navigate to the new page
             mobileNavOverlay.classList.remove('open');
+            menuToggle.classList.remove('is-active'); // Reset hamburger icon
             document.body.style.overflow = ''; // Restore scrolling
         });
     });
 
     // --- Active Navigation Link on Page Load ---
-    // This function will highlight the current page in the navigation
-    // Note: Since desktop nav is removed, this primarily affects the mobile nav if you want active state there.
     function updateActiveNavLink() {
         const path = window.location.pathname;
         const currentPage = path.substring(path.lastIndexOf('/') + 1) || 'index.html'; // Default to index.html
 
-        // Update mobile navigation (optional, but good for consistency)
+        // Update mobile navigation
         mobileNavLinks.forEach(link => {
             link.classList.remove('active');
             const linkHref = link.getAttribute('href');
